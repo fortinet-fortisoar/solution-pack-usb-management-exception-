@@ -1,0 +1,85 @@
+{
+    "name": "uSBApprovalSystem",
+    "version": "1.0.0",
+    "fsrMinCompatibility": "7.2.0",
+    "type": "solutionpack",
+    "local": true,
+    "label": "USB Approval System",
+    "dependencies": [
+        {
+            "name": "sOARFramework",
+            "type": "solutionpack",
+            "label": "SOAR Framework",
+            "minVersion": null
+        }
+    ],
+    "prerequisite": "* FortiEDR Connector\n* Active Directory Connector \n* Exchange Connector",
+    "publisher": "Islam Baker",
+    "description": "Fortisoar powerful tool to automate manual and repetitive tasks, especially when it comes to security and infrastructure? Juggling USB exception requests can be a real pain, with endless emails, approvals, and documentation. But what if there was a better way?\n\nIn this Solution pack, we'll show you exactly how Fortisoar can:\n\n\u2022\tEliminate tedious information gathering: Say goodbye to chasing down user details and approval statuses. Fortisoar captures everything automatically, saving you precious time and frustration.\n\u2022\tSimplify approvals: No more manual back-and-forth with managers. Fortisoar automates the approval process, ensuring it's efficient and transparent.\n\u2022\tAutomate access expiration: Never worry about forgetting to remove permissions again. Fortisoar automatically sets and enforces expiration dates, keeping your systems secure.\n\u2022\tStreamline documentation: Ditch the paper trail! Fortisoar keeps a complete audit log of all requests and approvals, readily available for compliance purposes.\n\nFortisoar can transform your USB exception management",
+    "help": null,
+    "category": [
+        "Endpoint Management"
+    ],
+    "supportInfo": null,
+    "iconLarge": "fsr-icon-large.png",
+    "postInstallConfig": null,
+    "recordTags": [
+        "USB Exception"
+    ],
+    "date": "2024-02-27T08:55:11+00:00",
+    "contents": {
+        "picklistNames": [
+            {
+                "name": "Request Status"
+            },
+            {
+                "name": "USBUSerRequest"
+            },
+            {
+                "name": "Validation"
+            }
+        ],
+        "modules": {
+            "u_s_bs": {
+                "name": "USBs",
+                "apiName": "u_s_bs"
+            }
+        },
+        "viewTemplates": {
+            "u_s_bs": {
+                "name": "USBs",
+                "apiName": "u_s_bs",
+                "views": [
+                    "list",
+                    "detail",
+                    "form"
+                ]
+            }
+        },
+        "playbooks": [
+            {
+                "name": "USB Approval system"
+            }
+        ],
+        "dashboards": [
+            {
+                "name": "USB Approval System"
+            }
+        ],
+        "connectors": [
+            {
+                "name": "Active Directory",
+                "apiName": "activedirectory"
+            },
+            {
+                "name": "Exchange",
+                "apiName": "exchange"
+            },
+            {
+                "name": "Fortinet FortiEDR",
+                "apiName": "fortinet-fortiedr_dev",
+                "version": "2.0.0"
+            }
+        ]
+    }
+}

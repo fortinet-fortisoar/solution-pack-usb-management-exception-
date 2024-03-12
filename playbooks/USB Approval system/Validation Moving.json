@@ -1,0 +1,312 @@
+{
+    "@context": "\/api\/3\/contexts\/Workflow",
+    "@type": "Workflow",
+    "triggerLimit": null,
+    "name": "Validation Moving",
+    "aliasName": null,
+    "tag": null,
+    "description": null,
+    "isActive": true,
+    "debug": false,
+    "singleRecordExecution": false,
+    "remoteExecutableFlag": false,
+    "parameters": [
+        "Case ID",
+        "ID",
+        "Manager Email",
+        "Requestor Email",
+        "Machine Name"
+    ],
+    "synchronous": false,
+    "collection": "\/api\/3\/workflow_collections\/95dff462-0a82-4595-986a-0f366d1776dc",
+    "versions": [],
+    "triggerStep": "\/api\/3\/workflow_steps\/fcc655fe-8797-41d4-95bb-46a18ac1b2b0",
+    "steps": [
+        {
+            "@type": "WorkflowStep",
+            "name": "Configuration",
+            "description": null,
+            "arguments": {
+                "ID": "{{vars.input.params.ID}}",
+                "CaseID": "{{vars.input.params['Case ID']}}",
+                "MachineName": "{{vars.input.params['Machine Name']}}",
+                "ManagerEmail": "{{vars.input.params['Manager Email']}}",
+                "RequestorEmail": "{{vars.input.params['Requestor Email']}}"
+            },
+            "status": null,
+            "top": "165",
+            "left": "300",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "group": null,
+            "uuid": "0db651a3-8a52-4e17-8d88-8bb31b0653aa"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Confirmation Email for moving collector",
+            "description": null,
+            "arguments": {
+                "name": "Exchange",
+                "config": "52794173-b426-4c36-a09b-5d95d7ad304f",
+                "params": {
+                    "body": "<p>Dear&nbsp;<\/p>\n<p>&nbsp;<\/p>\n<p>The Permission has been revoked successfully from Machine {{vars.MachineName}}<\/p>",
+                    "subject": "USB Request - ID {{vars.CaseID}} has been Revoked",
+                    "iri_list": "",
+                    "cc_recipients": "",
+                    "to_recipients": "{{vars.RequestorEmail}},{{vars.ManagerEmail}}",
+                    "bcc_recipients": "",
+                    "inline_iri_list": ""
+                },
+                "version": "9.9.9",
+                "connector": "exchange_dev",
+                "operation": "send_email",
+                "operationTitle": "Send Email",
+                "pickFromTenant": false,
+                "step_variables": []
+            },
+            "status": null,
+            "top": "705",
+            "left": "475",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "group": null,
+            "uuid": "be108697-fb7a-4282-8d73-05f296a1debb"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "notification due to error happend during moving",
+            "description": null,
+            "arguments": {
+                "name": "Exchange",
+                "config": "52794173-b426-4c36-a09b-5d95d7ad304f",
+                "params": {
+                    "body": "<p>Dear&nbsp;<\/p>\n<p>&nbsp;<\/p>\n<p>The Machine {{vars.MachineName}} has been failed to Revoke USB <span data-dobid=\"hdw\">privilege {{vars.steps.Revoke_permission.data.result}}<\/span><\/p>\n<div class=\"fAwxxf D5gqpe\" tabindex=\"0\" role=\"button\" data-ved=\"2ahUKEwjyhe-WwNCEAxXghP0HHWkTCoYQlfQBegQIRBAL\" data-uti=\"1\" aria-label=\"Listen\" data-use-default-audio-speed=\"false\" data-tts-string=\"\" data-tts-client-name=\"\" data-language-code=\"\" data-audio-play-tts=\"false\" data-animation-enabled=\"true\">\n<div class=\"brWULd Bheyob\">\n<div class=\"g1baVc aqCVJb\">&nbsp;<\/div>\n<\/div>\n<\/div>",
+                    "subject": "USB Request - ID {{vars.CaseID}} has been failed to Revoke",
+                    "iri_list": "",
+                    "cc_recipients": "",
+                    "to_recipients": "{{vars.ManagerEmail}},{{vars.RequestorEmail}}",
+                    "bcc_recipients": "",
+                    "inline_iri_list": ""
+                },
+                "version": "9.9.9",
+                "connector": "exchange_dev",
+                "operation": "send_email",
+                "operationTitle": "Send Email",
+                "pickFromTenant": false,
+                "step_variables": []
+            },
+            "status": null,
+            "top": "570",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "group": null,
+            "uuid": "eef119b9-0f55-4cbb-87c3-1e8171d81802"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Revoke permission",
+            "description": null,
+            "arguments": {
+                "name": "Fortinet FortiEDR",
+                "config": "ccabff18-59bc-45c5-b4b5-9f0941d39aa0",
+                "params": {
+                    "collectors": "{{vars.input.params['Machine Name']}}",
+                    "forceAssign": "",
+                    "organization": "EMEA-UAE-SE",
+                    "targetCollectorGroup": "FlagTheHack"
+                },
+                "version": "2.0.0",
+                "connector": "fortinet-fortiedr_dev",
+                "operation": "Move_collector",
+                "ignore_errors": true,
+                "operationTitle": "Move Collector to Another group",
+                "pickFromTenant": false,
+                "step_variables": []
+            },
+            "status": null,
+            "top": "300",
+            "left": "300",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "group": null,
+            "uuid": "64cdb4cc-e2a4-4a11-b325-42641ee2c77a"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Start",
+            "description": null,
+            "arguments": {
+                "__triggerLimit": true,
+                "step_variables": {
+                    "input": {
+                        "params": []
+                    }
+                },
+                "triggerOnSource": true,
+                "triggerOnReplicate": false
+            },
+            "status": null,
+            "top": "30",
+            "left": "300",
+            "stepType": "\/api\/3\/workflow_step_types\/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+            "group": null,
+            "uuid": "fcc655fe-8797-41d4-95bb-46a18ac1b2b0"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "update failed status",
+            "description": null,
+            "arguments": {
+                "resource": {
+                    "validation": "\/api\/3\/picklists\/75a885d6-05fd-4f5f-9af0-a3ea93894d54",
+                    "requestStatus": "\/api\/3\/picklists\/427ec113-86c8-4e32-84ef-50147ff03e77",
+                    "managerApprovalStatus": "\/api\/3\/picklists\/4f67349f-2006-4f4f-b9e4-bdca7ed18fb6"
+                },
+                "operation": "Append",
+                "collection": "{{vars.ID}}",
+                "__recommend": [],
+                "collectionType": "\/api\/3\/u_s_bs",
+                "fieldOperation": {
+                    "recordTags": "Append"
+                },
+                "step_variables": []
+            },
+            "status": null,
+            "top": "705",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
+            "group": null,
+            "uuid": "77d5400a-0ccf-492b-b9fa-433d923be8df"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Update Manager Request after approval",
+            "description": null,
+            "arguments": {
+                "resource": {
+                    "validation": "\/api\/3\/picklists\/92ac4a8d-8dba-4f78-a3f6-cccf735eeba6",
+                    "requestStatus": "\/api\/3\/picklists\/427ec113-86c8-4e32-84ef-50147ff03e77",
+                    "managerApprovalStatus": "\/api\/3\/picklists\/4f67349f-2006-4f4f-b9e4-bdca7ed18fb6"
+                },
+                "operation": "Append",
+                "collection": "{{vars.ID}}",
+                "__recommend": [],
+                "collectionType": "\/api\/3\/u_s_bs",
+                "fieldOperation": {
+                    "recordTags": "Append"
+                },
+                "step_variables": []
+            },
+            "status": null,
+            "top": "570",
+            "left": "475",
+            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
+            "group": null,
+            "uuid": "c2779bae-636c-49f4-ad07-bdad185505d5"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Validatation if the collector has been moved",
+            "description": null,
+            "arguments": {
+                "conditions": [
+                    {
+                        "option": "Collector moved",
+                        "step_iri": "\/api\/3\/workflow_steps\/c2779bae-636c-49f4-ad07-bdad185505d5",
+                        "condition": "{{ vars.steps.Revoke_permission.data.result == 'Successfully executed Move_collector' }}",
+                        "step_name": "Update Manager Request after approval"
+                    },
+                    {
+                        "option": "collector failed to move",
+                        "default": true,
+                        "step_iri": "\/api\/3\/workflow_steps\/eef119b9-0f55-4cbb-87c3-1e8171d81802",
+                        "step_name": "notification due to error happend during moving"
+                    }
+                ],
+                "step_variables": []
+            },
+            "status": null,
+            "top": "435",
+            "left": "300",
+            "stepType": "\/api\/3\/workflow_step_types\/12254cf5-5db7-4b1a-8cb1-3af081924b28",
+            "group": null,
+            "uuid": "3e0505fe-c7bd-4d27-85c5-a61b292c6f28"
+        }
+    ],
+    "routes": [
+        {
+            "@type": "WorkflowRoute",
+            "name": "Configuration -> Revoke permission",
+            "targetStep": "\/api\/3\/workflow_steps\/64cdb4cc-e2a4-4a11-b325-42641ee2c77a",
+            "sourceStep": "\/api\/3\/workflow_steps\/0db651a3-8a52-4e17-8d88-8bb31b0653aa",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "878e6df3-e96b-4016-8e8d-b042b642890f"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "notification due to error happend during moving -> update failed status",
+            "targetStep": "\/api\/3\/workflow_steps\/77d5400a-0ccf-492b-b9fa-433d923be8df",
+            "sourceStep": "\/api\/3\/workflow_steps\/eef119b9-0f55-4cbb-87c3-1e8171d81802",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "d55a4d96-e56c-47d1-8164-e147d9974a7a"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Revoke permission -> Validatation if the collector has been moved",
+            "targetStep": "\/api\/3\/workflow_steps\/3e0505fe-c7bd-4d27-85c5-a61b292c6f28",
+            "sourceStep": "\/api\/3\/workflow_steps\/64cdb4cc-e2a4-4a11-b325-42641ee2c77a",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "3acc6e35-eea4-42fd-86c1-8c6b0935cb13"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Start -> Configuration",
+            "targetStep": "\/api\/3\/workflow_steps\/0db651a3-8a52-4e17-8d88-8bb31b0653aa",
+            "sourceStep": "\/api\/3\/workflow_steps\/fcc655fe-8797-41d4-95bb-46a18ac1b2b0",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "a5642ca8-eb0d-413c-aa43-ee219f149d52"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Update Manager Request after approval -> Confirmation Email for moving collector",
+            "targetStep": "\/api\/3\/workflow_steps\/be108697-fb7a-4282-8d73-05f296a1debb",
+            "sourceStep": "\/api\/3\/workflow_steps\/c2779bae-636c-49f4-ad07-bdad185505d5",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "92847b26-ce27-4abf-8688-baba4ffc2422"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Validatation if the collector has been moved -> notification due to error happend during moving",
+            "targetStep": "\/api\/3\/workflow_steps\/eef119b9-0f55-4cbb-87c3-1e8171d81802",
+            "sourceStep": "\/api\/3\/workflow_steps\/3e0505fe-c7bd-4d27-85c5-a61b292c6f28",
+            "label": "collector failed to move",
+            "isExecuted": false,
+            "group": null,
+            "uuid": "0af3de3d-fba8-40ef-a918-54c73a7cfc35"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Validatation if the collector has been moved -> Update Manager Request after approval",
+            "targetStep": "\/api\/3\/workflow_steps\/c2779bae-636c-49f4-ad07-bdad185505d5",
+            "sourceStep": "\/api\/3\/workflow_steps\/3e0505fe-c7bd-4d27-85c5-a61b292c6f28",
+            "label": "Collector moved",
+            "isExecuted": false,
+            "group": null,
+            "uuid": "2d2eade6-bb49-4662-8d47-d96302b32680"
+        }
+    ],
+    "groups": [],
+    "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+    "uuid": "ebd48f39-3e2b-4f8b-8d1e-ba4cfc26a698",
+    "owners": [],
+    "isPrivate": false,
+    "deletedAt": null,
+    "recordTags": []
+}

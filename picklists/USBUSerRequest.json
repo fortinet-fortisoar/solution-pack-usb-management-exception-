@@ -1,0 +1,100 @@
+{
+    "@context": "\/api\/3\/contexts\/PicklistName",
+    "@id": "\/api\/3\/picklist_names\/54d002df-71e0-498c-b8d3-73cbe19ab09d",
+    "@type": "PicklistName",
+    "name": "USBUSerRequest",
+    "system": false,
+    "picklists": [
+        {
+            "@id": "\/api\/3\/picklists\/5f36debe-b710-43ce-860e-89d7e234aa8e",
+            "@type": "Picklist",
+            "itemValue": "Sent to Manager",
+            "orderIndex": 0,
+            "color": "#bc7272",
+            "icon": null,
+            "listName": "\/api\/3\/picklist_names\/54d002df-71e0-498c-b8d3-73cbe19ab09d",
+            "uuid": "5f36debe-b710-43ce-860e-89d7e234aa8e"
+        },
+        {
+            "@id": "\/api\/3\/picklists\/c967a6da-04ba-4df8-bbda-5cf0fc61fe6c",
+            "@type": "Picklist",
+            "itemValue": "Open",
+            "orderIndex": 1,
+            "color": "#1d62c7",
+            "icon": null,
+            "listName": "\/api\/3\/picklist_names\/54d002df-71e0-498c-b8d3-73cbe19ab09d",
+            "uuid": "c967a6da-04ba-4df8-bbda-5cf0fc61fe6c"
+        },
+        {
+            "@id": "\/api\/3\/picklists\/4f67349f-2006-4f4f-b9e4-bdca7ed18fb6",
+            "@type": "Picklist",
+            "itemValue": "Approved by Manager",
+            "orderIndex": 2,
+            "color": "#16e095",
+            "icon": null,
+            "listName": "\/api\/3\/picklist_names\/54d002df-71e0-498c-b8d3-73cbe19ab09d",
+            "uuid": "4f67349f-2006-4f4f-b9e4-bdca7ed18fb6"
+        },
+        {
+            "@id": "\/api\/3\/picklists\/17a94702-a43a-4f49-b116-62cacb2545aa",
+            "@type": "Picklist",
+            "itemValue": "Pushed to AD Rule",
+            "orderIndex": 3,
+            "color": "#39cbdd",
+            "icon": null,
+            "listName": "\/api\/3\/picklist_names\/54d002df-71e0-498c-b8d3-73cbe19ab09d",
+            "uuid": "17a94702-a43a-4f49-b116-62cacb2545aa"
+        },
+        {
+            "@id": "\/api\/3\/picklists\/66694bff-6d94-429f-b15b-cbab5ee03438",
+            "@type": "Picklist",
+            "itemValue": "Approved Request Closed",
+            "orderIndex": 4,
+            "color": "#12ea3f",
+            "icon": null,
+            "listName": "\/api\/3\/picklist_names\/54d002df-71e0-498c-b8d3-73cbe19ab09d",
+            "uuid": "66694bff-6d94-429f-b15b-cbab5ee03438"
+        },
+        {
+            "@id": "\/api\/3\/picklists\/45ab7921-a8ed-4f60-8169-cc6939aa4c30",
+            "@type": "Picklist",
+            "itemValue": "Failed on Active Directory",
+            "orderIndex": 5,
+            "color": "#bc772b",
+            "icon": null,
+            "listName": "\/api\/3\/picklist_names\/54d002df-71e0-498c-b8d3-73cbe19ab09d",
+            "uuid": "45ab7921-a8ed-4f60-8169-cc6939aa4c30"
+        },
+        {
+            "@id": "\/api\/3\/picklists\/50b13f64-d811-4d66-aeb2-112e266c3465",
+            "@type": "Picklist",
+            "itemValue": "Rejected By Manager",
+            "orderIndex": 6,
+            "color": "#e02727",
+            "icon": null,
+            "listName": "\/api\/3\/picklist_names\/54d002df-71e0-498c-b8d3-73cbe19ab09d",
+            "uuid": "50b13f64-d811-4d66-aeb2-112e266c3465"
+        },
+        {
+            "@id": "\/api\/3\/picklists\/293ded79-e154-419b-96a1-e7fa64b67eae",
+            "@type": "Picklist",
+            "itemValue": "Removed from AD",
+            "orderIndex": 7,
+            "color": "#0d0303",
+            "icon": null,
+            "listName": "\/api\/3\/picklist_names\/54d002df-71e0-498c-b8d3-73cbe19ab09d",
+            "uuid": "293ded79-e154-419b-96a1-e7fa64b67eae"
+        },
+        {
+            "@id": "\/api\/3\/picklists\/107b80ee-9ffe-44a6-9481-47e93a07d48b",
+            "@type": "Picklist",
+            "itemValue": "Rejected Request is Closed",
+            "orderIndex": 8,
+            "color": "#c71c1c",
+            "icon": null,
+            "listName": "\/api\/3\/picklist_names\/54d002df-71e0-498c-b8d3-73cbe19ab09d",
+            "uuid": "107b80ee-9ffe-44a6-9481-47e93a07d48b"
+        }
+    ],
+    "uuid": "54d002df-71e0-498c-b8d3-73cbe19ab09d"
+}

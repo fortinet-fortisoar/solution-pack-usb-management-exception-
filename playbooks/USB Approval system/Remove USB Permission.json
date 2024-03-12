@@ -1,0 +1,221 @@
+{
+    "@context": "\/api\/3\/contexts\/Workflow",
+    "@type": "Workflow",
+    "triggerLimit": null,
+    "name": "Remove USB Permission",
+    "aliasName": null,
+    "tag": null,
+    "description": null,
+    "isActive": true,
+    "debug": true,
+    "singleRecordExecution": false,
+    "remoteExecutableFlag": false,
+    "parameters": [],
+    "synchronous": false,
+    "collection": "\/api\/3\/workflow_collections\/95dff462-0a82-4595-986a-0f366d1776dc",
+    "versions": [],
+    "triggerStep": "\/api\/3\/workflow_steps\/41836fce-f938-4a8b-817a-73642cf3f279",
+    "steps": [
+        {
+            "@type": "WorkflowStep",
+            "name": "Find Record",
+            "description": null,
+            "arguments": {
+                "query": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "type": "object",
+                            "field": "validation",
+                            "value": "\/api\/3\/picklists\/7fe30555-4ad5-495f-a360-60c207ded3eb",
+                            "_value": {
+                                "@id": "\/api\/3\/picklists\/7fe30555-4ad5-495f-a360-60c207ded3eb",
+                                "display": "Valid",
+                                "itemValue": "Valid"
+                            },
+                            "operator": "eq"
+                        },
+                        {
+                            "type": "datetime",
+                            "field": "allowedUntil",
+                            "value": "{{arrow.utcnow().format(\"YYYY-MM-DD HH:mm:ss ZZ\")}}",
+                            "operator": "lte"
+                        }
+                    ]
+                },
+                "module": "u_s_bs?$limit=30",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "165",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
+            "group": null,
+            "uuid": "16acc568-aaef-421a-9729-effe6ca5f752"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Start",
+            "description": null,
+            "arguments": {
+                "route": "eb90866b-e191-4fe3-b38d-6051b1f1c86a",
+                "resources": [
+                    "u_s_bs"
+                ],
+                "__triggerLimit": true,
+                "inputVariables": [],
+                "step_variables": {
+                    "input": {
+                        "params": [],
+                        "records": "{{vars.input.records}}"
+                    }
+                },
+                "triggerOnSource": true,
+                "displayConditions": {
+                    "u_s_bs": {
+                        "sort": [],
+                        "limit": 30,
+                        "logic": "AND",
+                        "filters": []
+                    }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": false,
+                "showToasterMessage": {
+                    "visible": false,
+                    "messageVisible": true
+                },
+                "triggerOnReplicate": false,
+                "singleRecordExecution": false
+            },
+            "status": null,
+            "top": "30",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+            "group": null,
+            "uuid": "41836fce-f938-4a8b-817a-73642cf3f279"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Validate Moving Status",
+            "description": null,
+            "arguments": {
+                "for_each": {
+                    "item": "{{vars.steps.Find_Record}}",
+                    "parallel": false,
+                    "condition": ""
+                },
+                "arguments": {
+                    "ID": "{{vars.item['@id']}}",
+                    "Case ID": "{{vars.item.id}}",
+                    "Machine Name": "{{vars.item.machineName}}",
+                    "Manager Email": "{{vars.item.managerEmail}}",
+                    "Requestor Email": "{{vars.item.userEmail}}"
+                },
+                "apply_async": false,
+                "step_variables": [],
+                "pass_parent_env": false,
+                "pass_input_record": true,
+                "workflowReference": "\/api\/3\/workflows\/ebd48f39-3e2b-4f8b-8d1e-ba4cfc26a698"
+            },
+            "status": null,
+            "top": "300",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "group": null,
+            "uuid": "9fec6c86-d527-47ef-936d-b0835f1c9b43"
+        }
+    ],
+    "routes": [
+        {
+            "@type": "WorkflowRoute",
+            "name": "Find Record -> Validate Moving Status",
+            "targetStep": "\/api\/3\/workflow_steps\/9fec6c86-d527-47ef-936d-b0835f1c9b43",
+            "sourceStep": "\/api\/3\/workflow_steps\/16acc568-aaef-421a-9729-effe6ca5f752",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "75277410-b9e5-4464-b1fe-9f0c13101861"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Start -> Find Record",
+            "targetStep": "\/api\/3\/workflow_steps\/16acc568-aaef-421a-9729-effe6ca5f752",
+            "sourceStep": "\/api\/3\/workflow_steps\/41836fce-f938-4a8b-817a-73642cf3f279",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "7ce694d5-a0e7-481e-b1fe-67f2aa871739"
+        }
+    ],
+    "groups": [],
+    "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+    "uuid": "26e7af16-9179-41b5-8634-5fbb11edf38f",
+    "owners": [],
+    "isPrivate": false,
+    "deletedAt": null,
+    "recordTags": [],
+    "schedules": [
+        {
+            "id": "gAAAAABl5GqiRt-b4I7sCRaGrpqrDSIYdG99UlVPuF-NJuEalcZS9d0B1Cdvhse_oKuULYq_Y1THDnFaEQXMj9D5UB2n-XCUow==",
+            "crontab": {
+                "id": 11,
+                "minute": "*\/5",
+                "hour": "*",
+                "day_of_week": "*",
+                "day_of_month": "*",
+                "month_of_year": "*",
+                "timezone": "UTC"
+            },
+            "interval": null,
+            "name": "Remove USB",
+            "task": "workflow.tasks.periodic_task",
+            "args": "[]",
+            "kwargs": {
+                "timezone": "Asia\/Riyadh",
+                "utcOffset": "UTC+03:00",
+                "wf_iri": "\/api\/3\/workflows\/26e7af16-9179-41b5-8634-5fbb11edf38f",
+                "priority": {
+                    "@id": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+                    "@type": "Picklist",
+                    "itemValue": "Medium",
+                    "orderIndex": 1,
+                    "color": null,
+                    "icon": null,
+                    "listName": "\/api\/3\/picklist_names\/e104ef72-11b4-4d0c-be0e-e1cf3b87b5f2",
+                    "uuid": "2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+                    "id": 111,
+                    "importedBy": []
+                },
+                "exit_if_running": false,
+                "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
+                "name": "Remove USB",
+                "description": "Remove USB",
+                "auth": {
+                    "auth_method": "CS HMAC"
+                },
+                "referenceid": null,
+                "schedule_entry_name": "Remove USB",
+                "schedule_id": "97c7a07d-1578-4668-94d3-1e3ad1e77b38"
+            },
+            "queue": null,
+            "exchange": null,
+            "routing_key": null,
+            "headers": "{}",
+            "priority": 3,
+            "expires": null,
+            "expire_seconds": null,
+            "one_off": false,
+            "start_time": null,
+            "enabled": true,
+            "last_run_at": "2024-03-03T12:15:00.319247Z",
+            "total_run_count": 852,
+            "date_changed": "2024-03-03T12:16:00.286188Z",
+            "description": "Remove USB",
+            "solar": null,
+            "clocked": null
+        }
+    ]
+}
