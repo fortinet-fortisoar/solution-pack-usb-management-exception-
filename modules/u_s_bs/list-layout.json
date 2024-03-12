@@ -1,0 +1,48 @@
+{
+    "@context": "\/api\/3\/contexts\/SystemViewTemplate",
+    "@type": "SystemViewTemplate",
+    "type": "rows",
+    "config": {
+        "rows": [
+            {
+                "columns": [
+                    {
+                        "widgets": [
+                            {
+                                "type": "grid",
+                                "config": {
+                                    "wid": "2076fa7c-6423-4d71-a159-aebc25355e5f",
+                                    "module": "u_s_bs",
+                                    "columns": [
+                                        "id",
+                                        "sOCApproval"
+                                    ],
+                                    "expandableCol": [],
+                                    "relationshipField": [],
+                                    "checkboxStatus": false,
+                                    "editableFields": false,
+                                    "actionButtons": [],
+                                    "query": {
+                                        "sort": [],
+                                        "limit": 30,
+                                        "logic": "AND",
+                                        "filters": []
+                                    }
+                                }
+                            }
+                        ],
+                        "style": "col-lg-12"
+                    }
+                ],
+                "wid": "57c8e41c-69e8-44b2-991d-47895f9b749e",
+                "_collapsed": false
+            }
+        ],
+        "wid": "6d60588a-86bf-4470-acbc-fcac8fecf99b",
+        "metadata": {
+            "customTemplateTitle": "USB Request",
+            "originalTemplateTitle": "USBs"
+        }
+    },
+    "uuid": "modules-u_s_bs-list"
+}

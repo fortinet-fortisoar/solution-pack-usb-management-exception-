@@ -1,0 +1,13 @@
+{
+    "@context": "\/api\/3\/contexts\/WorkflowCollection",
+    "@type": "WorkflowCollection",
+    "name": "USB Approval system",
+    "description": null,
+    "visible": true,
+    "image": null,
+    "uuid": "95dff462-0a82-4595-986a-0f366d1776dc",
+    "deletedAt": null,
+    "recordTags": [
+        "USB Exception"
+    ]
+}

@@ -1,0 +1,288 @@
+{
+    "@context": "\/api\/3\/contexts\/Dashboard",
+    "@type": "Dashboard",
+    "uuid": "49ab97df-f98e-4893-8cef-79aa11611eb0",
+    "displayName": "USB Approval System",
+    "type": "rows",
+    "templateType": "dashboard",
+    "roles": [],
+    "parentTemplateId": null,
+    "config": {
+        "rows": [
+            {
+                "columns": [
+                    {
+                        "widgets": [
+                            {
+                                "type": "cardCount",
+                                "config": {
+                                    "wid": "8930f2c4-5bcc-42c1-890a-83219def002f",
+                                    "query": {
+                                        "sort": [
+                                            {
+                                                "field": "managerApprovalStatus.orderIndex",
+                                                "direction": "ASC"
+                                            }
+                                        ],
+                                        "limit": 30,
+                                        "logic": "AND",
+                                        "filters": [],
+                                        "aggregates": [
+                                            {
+                                                "operator": "countdistinct",
+                                                "field": "*",
+                                                "alias": "total"
+                                            },
+                                            {
+                                                "operator": "groupby",
+                                                "alias": "managerApprovalStatus",
+                                                "field": "managerApprovalStatus.itemValue"
+                                            },
+                                            {
+                                                "operator": "groupby",
+                                                "alias": "color",
+                                                "field": "managerApprovalStatus.color"
+                                            },
+                                            {
+                                                "operator": "groupby",
+                                                "alias": "orderIndex",
+                                                "field": "managerApprovalStatus.orderIndex"
+                                            }
+                                        ]
+                                    },
+                                    "mapping": {
+                                        "assignedToPerson": "",
+                                        "fieldName": "managerApprovalStatus"
+                                    },
+                                    "aggregate": true,
+                                    "assignedToSetting": "all",
+                                    "title": "USB Request Status",
+                                    "resource": "u_s_bs"
+                                }
+                            }
+                        ],
+                        "style": "col-lg-6"
+                    },
+                    {
+                        "widgets": [
+                            {
+                                "type": "cardCount",
+                                "config": {
+                                    "wid": "9bce2f89-d820-4af5-be69-45a3067dc3d5",
+                                    "query": {
+                                        "sort": [
+                                            {
+                                                "field": "validation.orderIndex",
+                                                "direction": "ASC"
+                                            }
+                                        ],
+                                        "limit": 30,
+                                        "logic": "AND",
+                                        "filters": [],
+                                        "aggregates": [
+                                            {
+                                                "operator": "countdistinct",
+                                                "field": "*",
+                                                "alias": "total"
+                                            },
+                                            {
+                                                "operator": "groupby",
+                                                "alias": "validation",
+                                                "field": "validation.itemValue"
+                                            },
+                                            {
+                                                "operator": "groupby",
+                                                "alias": "color",
+                                                "field": "validation.color"
+                                            },
+                                            {
+                                                "operator": "groupby",
+                                                "alias": "orderIndex",
+                                                "field": "validation.orderIndex"
+                                            }
+                                        ]
+                                    },
+                                    "mapping": {
+                                        "assignedToPerson": "",
+                                        "fieldName": "validation"
+                                    },
+                                    "aggregate": true,
+                                    "assignedToSetting": "all",
+                                    "title": "USB Request Status (Validation)",
+                                    "resource": "u_s_bs"
+                                }
+                            }
+                        ],
+                        "style": "col-lg-6"
+                    }
+                ],
+                "wid": "9f2d0dcb-33cd-4211-a8bc-13aeaf576d68",
+                "_collapsed": false,
+                "container": false,
+                "collapsible": false,
+                "collapsibleIndex": 0
+            },
+            {
+                "columns": [
+                    {
+                        "widgets": [
+                            {
+                                "type": "chart",
+                                "config": {
+                                    "wid": "70f69eb4-0b27-42ba-be43-92f1dc2981a5",
+                                    "widgetAlwaysDisplay": true,
+                                    "showTabularData": false,
+                                    "query": {
+                                        "sort": [],
+                                        "limit": 2147483647,
+                                        "logic": "AND",
+                                        "filters": [
+                                            {
+                                                "field": "managerApprovalStatus",
+                                                "operator": "eq",
+                                                "value": "\/api\/3\/picklists\/5f36debe-b710-43ce-860e-89d7e234aa8e",
+                                                "_value": {
+                                                    "itemValue": "Sent to Manager",
+                                                    "@id": "\/api\/3\/picklists\/5f36debe-b710-43ce-860e-89d7e234aa8e"
+                                                },
+                                                "type": "object"
+                                            }
+                                        ],
+                                        "aggregates": [
+                                            {
+                                                "operator": "countdistinct",
+                                                "field": "*",
+                                                "alias": "total"
+                                            },
+                                            {
+                                                "operator": "groupby",
+                                                "alias": "managerName",
+                                                "field": "managerName"
+                                            }
+                                        ]
+                                    },
+                                    "mapping": {
+                                        "fieldName": "managerName"
+                                    },
+                                    "assignedToSetting": "all",
+                                    "aggregate": true,
+                                    "title": "USB Pending Manager Approval",
+                                    "resource": "u_s_bs",
+                                    "chart": "donut",
+                                    "showCount": true
+                                }
+                            }
+                        ],
+                        "style": "col-lg-6"
+                    },
+                    {
+                        "widgets": [
+                            {
+                                "type": "chart",
+                                "config": {
+                                    "wid": "a4eb0e8e-26c9-4533-a467-860f08c33bb8",
+                                    "widgetAlwaysDisplay": true,
+                                    "showTabularData": false,
+                                    "query": {
+                                        "sort": [
+                                            {
+                                                "field": "managerApprovalStatus.orderIndex",
+                                                "direction": "ASC"
+                                            }
+                                        ],
+                                        "limit": 2147483647,
+                                        "logic": "AND",
+                                        "filters": [],
+                                        "aggregates": [
+                                            {
+                                                "operator": "countdistinct",
+                                                "field": "*",
+                                                "alias": "total"
+                                            },
+                                            {
+                                                "operator": "groupby",
+                                                "alias": "managerApprovalStatus",
+                                                "field": "managerApprovalStatus.itemValue"
+                                            },
+                                            {
+                                                "operator": "groupby",
+                                                "alias": "color",
+                                                "field": "managerApprovalStatus.color"
+                                            },
+                                            {
+                                                "operator": "groupby",
+                                                "alias": "orderIndex",
+                                                "field": "managerApprovalStatus.orderIndex"
+                                            }
+                                        ]
+                                    },
+                                    "mapping": {
+                                        "fieldName": "managerApprovalStatus",
+                                        "firstGrouping": "",
+                                        "secondGrouping": "managerName"
+                                    },
+                                    "assignedToSetting": "all",
+                                    "aggregate": true,
+                                    "title": "USB Request Status",
+                                    "resource": "u_s_bs",
+                                    "chart": "donut",
+                                    "barStyle": "vertical",
+                                    "showCount": true
+                                }
+                            }
+                        ],
+                        "style": "col-lg-6"
+                    }
+                ],
+                "wid": "005515df-2e35-49d7-8341-9daaacc06e2b",
+                "_collapsed": false,
+                "collapsible": false,
+                "collapsibleIndex": 0
+            },
+            {
+                "columns": [
+                    {
+                        "widgets": [
+                            {
+                                "type": "simpleGrid",
+                                "config": {
+                                    "wid": "e4395fa6-a2fc-4ea8-b76e-0e759e4ee792",
+                                    "widgetAlwaysDisplay": true,
+                                    "query": {
+                                        "sort": [],
+                                        "limit": 10,
+                                        "logic": "AND",
+                                        "filters": []
+                                    },
+                                    "mapping": {
+                                        "assignedToPerson": ""
+                                    },
+                                    "columns": [
+                                        "requesterName",
+                                        "username",
+                                        "managerName",
+                                        "managerApprovalStatus",
+                                        "requestStatus",
+                                        "validation"
+                                    ],
+                                    "module": "u_s_bs",
+                                    "enableColumnWidthConfig": false,
+                                    "title": "USB Request Status"
+                                }
+                            }
+                        ],
+                        "style": "col-lg-12"
+                    }
+                ],
+                "wid": "2101a217-25b0-410d-a35a-f70bb1ca055f",
+                "_collapsed": false
+            }
+        ],
+        "wid": "442eff56-e60f-4920-aee7-b4811a9ef3ac",
+        "metadata": {
+            "customTemplateTitle": "Dashboard"
+        }
+    },
+    "filterArray": [],
+    "updateDate": null
+}

@@ -1,0 +1,90 @@
+[
+    {
+        "name": "activedirectory",
+        "label": "Active Directory",
+        "category": [
+            "Directory Service"
+        ],
+        "description": "Active Directory (AD) is a directory service that Microsoft developed for Windows domain networks. You can directly query AD to retrieve information about users, groups, and computers, in an organization, by using the Lightweight Directory Access Protocol (LDAP) to directly query the AD.",
+        "publisher": "Fortinet",
+        "operation_roles": [],
+        "configurations": [
+            {
+                "id": 72,
+                "config_id": "6ef440c4-9c5e-4ac1-a634-ea7603b9f836",
+                "status": 1,
+                "name": "Active Directory",
+                "default": true,
+                "config": {
+                    "port": 389,
+                    "baseDN": "DC=Fortinet-test,DC=COM",
+                    "bindDN": "",
+                    "use_tls": false,
+                    "hostname": "192.168.55.10",
+                    "password": "nzYAlaNRuuH73MyrJYBp5i7pufIB0GDalMFz2DRylA==I3dmcn23@KlS2#!ck",
+                    "username": "Administrator"
+                },
+                "remote_status": [],
+                "health_status": [],
+                "connector": 136,
+                "agent": "ff0798a275f60b847e4f911cb80108ed",
+                "teams": []
+            }
+        ],
+        "dataImports": [],
+        "install_mode": "rpm",
+        "ingestionPlaybooks": {
+            "collections": [],
+            "exported_tags": []
+        }
+    },
+    {
+        "name": "exchange",
+        "label": "Exchange",
+        "category": [
+            "Email Server"
+        ],
+        "description": "The Exchange connector provides a robust, platform-independent, and simple interface for communicating with Microsoft Exchange 2007-2016 Server or Office 365 using Exchange Web Services (EWS).",
+        "publisher": "Fortinet",
+        "operation_roles": [],
+        "configurations": [],
+        "dataImports": [],
+        "install_mode": "rpm"
+    },
+    {
+        "name": "fortinet-fortiedr_dev",
+        "label": "Fortinet FortiEDR",
+        "category": [
+            "Endpoint Protection"
+        ],
+        "description": "FortiEDR protects endpoints pre and post infection, stopping data breaches in real-time and automatically orchestrating incident investigation and response. This connector facilitates the automated operations related to events, forensics and collectors.",
+        "publisher": null,
+        "version": "2.0.0",
+        "operation_roles": [],
+        "configurations": [
+            {
+                "id": 111,
+                "config_id": "ccabff18-59bc-45c5-b4b5-9f0941d39aa0",
+                "status": 1,
+                "name": "FortiEDR",
+                "default": true,
+                "config": {
+                    "password": "u8Sl\/V5X4MWalcGGZZ5PWusyNuB3oVVMflYcmjt9Iw==I3dmcn23@KlS2#!ck",
+                    "username": "EMEA-UAE-SE\\ibaker",
+                    "server_url": "https:\/\/fortinetdemoemea.console.ensilo.com\/",
+                    "verify_ssl": true
+                },
+                "remote_status": [],
+                "health_status": [],
+                "connector": 199,
+                "agent": "ff0798a275f60b847e4f911cb80108ed",
+                "teams": []
+            }
+        ],
+        "dataImports": [],
+        "ingestionPlaybooks": {
+            "collections": [],
+            "exported_tags": []
+        }
+    }
+]

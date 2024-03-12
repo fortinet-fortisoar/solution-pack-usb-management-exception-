@@ -1,0 +1,60 @@
+{
+    "@context": "\/api\/3\/contexts\/PicklistName",
+    "@id": "\/api\/3\/picklist_names\/c81a3e85-b1a2-4c08-a8c0-1ad656a1284a",
+    "@type": "PicklistName",
+    "name": "Validation",
+    "system": false,
+    "picklists": [
+        {
+            "@id": "\/api\/3\/picklists\/7fe30555-4ad5-495f-a360-60c207ded3eb",
+            "@type": "Picklist",
+            "itemValue": "Valid",
+            "orderIndex": 0,
+            "color": "#28cc27",
+            "icon": null,
+            "listName": "\/api\/3\/picklist_names\/c81a3e85-b1a2-4c08-a8c0-1ad656a1284a",
+            "uuid": "7fe30555-4ad5-495f-a360-60c207ded3eb"
+        },
+        {
+            "@id": "\/api\/3\/picklists\/92ac4a8d-8dba-4f78-a3f6-cccf735eeba6",
+            "@type": "Picklist",
+            "itemValue": "Expired",
+            "orderIndex": 1,
+            "color": "#e82c2c",
+            "icon": null,
+            "listName": "\/api\/3\/picklist_names\/c81a3e85-b1a2-4c08-a8c0-1ad656a1284a",
+            "uuid": "92ac4a8d-8dba-4f78-a3f6-cccf735eeba6"
+        },
+        {
+            "@id": "\/api\/3\/picklists\/a83bf5f0-03c6-469c-a2ba-fd96cbdd9396",
+            "@type": "Picklist",
+            "itemValue": "Pending",
+            "orderIndex": 2,
+            "color": "#d5f06e",
+            "icon": null,
+            "listName": "\/api\/3\/picklist_names\/c81a3e85-b1a2-4c08-a8c0-1ad656a1284a",
+            "uuid": "a83bf5f0-03c6-469c-a2ba-fd96cbdd9396"
+        },
+        {
+            "@id": "\/api\/3\/picklists\/99da698b-25f4-400f-bd33-56340d1162db",
+            "@type": "Picklist",
+            "itemValue": "Stopped",
+            "orderIndex": 3,
+            "color": "#0d0909",
+            "icon": null,
+            "listName": "\/api\/3\/picklist_names\/c81a3e85-b1a2-4c08-a8c0-1ad656a1284a",
+            "uuid": "99da698b-25f4-400f-bd33-56340d1162db"
+        },
+        {
+            "@id": "\/api\/3\/picklists\/75a885d6-05fd-4f5f-9af0-a3ea93894d54",
+            "@type": "Picklist",
+            "itemValue": "Error Moving",
+            "orderIndex": 4,
+            "color": "#e37d7d",
+            "icon": null,
+            "listName": "\/api\/3\/picklist_names\/c81a3e85-b1a2-4c08-a8c0-1ad656a1284a",
+            "uuid": "75a885d6-05fd-4f5f-9af0-a3ea93894d54"
+        }
+    ],
+    "uuid": "c81a3e85-b1a2-4c08-a8c0-1ad656a1284a"
+}
